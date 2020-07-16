@@ -147,6 +147,8 @@ df1['date']=df2.date
 df1['X_axis']=X_FFT
 df1['Y_axis']=Y_FFT
 df1['Z_axis']=Z_FFT
+df1['TEMPERATURE']=df2.TEMP
 df1['Overall_vibration']=OV_Vib
 
 print("new dataframe is \n",df1.tail())
+print("new dataframe is \n",df2.tail())

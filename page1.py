@@ -7,8 +7,8 @@ import dash_bootstrap_components as dbc
 from fftcode import df1
 
 df=df1
-data1=['X_axis','Y_axis','Z_axis']
-data2=['None','X_axis','Y_axis','Z_axis']
+data1=['X_axis','Y_axis','Z_axis','Overall_vibration','TEMPERATURE']
+data2=['None','X_axis','Y_axis','Z_axis','Overall_vibration','TEMPERATURE']
 
 
 
@@ -35,13 +35,19 @@ pageone=html.Div([html.Div(['This is Visualization Page'],style={'color':'white'
         initial_visible_month=dt(2019, 8, 1),
         start_date=str(dt(2019, 8, 2)),
         end_date=str(dt(2019, 8, 25)) 
-        )]),
-    html.Div([ html.P(["Select Graph Data"]),
+        )]),html.P(["Select Graph Data with Multi Axis"],style={'color':'white'}),
+    html.Div([ 
                dcc.Dropdown(id='drop1',
                      options=[{'label': k, 'value': k} for k in data1],
                       value='X_axis'),
                ],
-                     style={'width':'10%'}),
+                     style={'width':'10%','display':'inline-block'}),
+                     html.Div([
+        dcc.Dropdown(id='drop2',
+                     options=[{'label': k, 'value': k} for k in data2],
+                      value='None')
+                    ],
+        style={'width':'10%','display':'inline-block'}),
              
             
     html.Div([

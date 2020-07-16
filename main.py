@@ -24,9 +24,10 @@ data1=['X_axis','Y_axis','Z_axis']
 data2=['None','X_axis','Y_axis','Z_axis']
 
 app=dash.Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
+app.title="vdeal"
 app.layout=html.Div([
                         
-
+                        
                        dcc.Location(id='url'),
                        html.Div(id='page-content'),
                        
@@ -34,7 +35,8 @@ app.layout=html.Div([
 
                     ])
 
-index_page=html.Div([html.Img(src=app.get_asset_url('/vdeallogo.png'), style={'position':'inline-block',
+index_page=html.Div([   html.Title(["VDEAL SENSOR DATA"]),
+                        html.Img(src=app.get_asset_url('/vdeallogo.png'), style={'position':'inline-block',
                             'top':30,
                             'left':30,
                             'height':'20%','width':'10%'}),
@@ -42,7 +44,9 @@ index_page=html.Div([html.Img(src=app.get_asset_url('/vdeallogo.png'), style={'p
                             'top':30,
                             'float':'right',
                             'height':'70%','width':'35%'}),
-   index.indexpage,
+                            html.Div([  html.Img(src=app.get_asset_url('/direct1.gif'), style={'position':'inline-block',
+                            
+                            'height':'7%','width':'3%'}) ,index.indexpage])
 
 ],style={'background-image':'url("/assets/three.jpg")','background-repeat':'no-repeat','background-size':'1600px 1200px','padding':'10px'})
 
@@ -77,9 +81,10 @@ def display_page(pathname):
     Output('graph-1', 'figure'),
     [Input('my-date', 'start_date'),
      Input('my-date', 'end_date'),
-     Input('drop1', 'value')])
+     Input('drop1', 'value'),
+     Input('drop2', 'value')])
 
-def update_output(start_date, end_date,axisone):
+def update_output(start_date, end_date,axisone,two):
     
     df['date'] = pd.to_datetime(df['date'], format='%d-%m-%Y')
     df2 = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
@@ -88,10 +93,11 @@ def update_output(start_date, end_date,axisone):
     
     
     return {'data':[
-            {'x':df3['date'],'y':df3[axisone],'name':'Trace-1'}
+            {'x':df3['date'],'y':df3[axisone],'name':'Trace-1'},
+            {'x':df3['date'],'y':df3[two],'name':'Trace-2'}
                     ]
                     
-            ,'layout':{'title':'Selected Data',
+            ,'layout':{'title':'Vibration data in Velocity mm/sec',
             
             'transition': {
                 'duration': 500,
