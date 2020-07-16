@@ -142,7 +142,7 @@ print("lenght of sample is \n",len(OV_Vib),len(Z_FFT))
 print("Vibration Data is \n",OV_Vib)
 
 df1=pd.DataFrame()
-
+df1['None']=df2['None']
 df1['date']=df2.date
 df1['X_axis']=X_FFT
 df1['Y_axis']=Y_FFT

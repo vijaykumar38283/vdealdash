@@ -87,14 +87,14 @@ def display_page(pathname):
 def update_output(start_date, end_date,axisone,two):
     
     df['date'] = pd.to_datetime(df['date'], format='%d-%m-%Y')
-    df2 = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
+    dff2 = df[(df['date'] >= start_date) & (df['date'] <= end_date)]
     
-    df3=df2
+    
     
     
     return {'data':[
-            {'x':df3['date'],'y':df3[axisone],'name':'Trace-1'},
-            {'x':df3['date'],'y':df3[two],'name':'Trace-2'}
+            {'x':dff2['date'],'y':dff2[axisone],'name':'Trace-1'},
+            {'x':dff2['date'],'y':dff2[two],'name':'Trace-2'}
                     ]
                     
             ,'layout':{'title':'Vibration data in Velocity mm/sec',

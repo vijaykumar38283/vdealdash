@@ -6,7 +6,6 @@ from dash.dependencies import Output, Input, State
 import dash_bootstrap_components as dbc
 from fftcode import df1
 
-df=df1
 data1=['X_axis','Y_axis','Z_axis','Overall_vibration','TEMPERATURE']
 data2=['None','X_axis','Y_axis','Z_axis','Overall_vibration','TEMPERATURE']
 
