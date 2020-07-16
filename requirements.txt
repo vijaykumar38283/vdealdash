@@ -2,6 +2,5 @@
 dash
 dash-bootstrap-components
 pandas
-maths
 scipy
 DateTime
